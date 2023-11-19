@@ -18,12 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState != null) {
             if (savedInstanceState.getBoolean("isHide", false)) {
-                titleTextView.visibility = TextView.GONE
+                titleTextView.visibility = TextView.INVISIBLE
             }
         }
 
         hideButton.setOnClickListener {
-            titleTextView.visibility = TextView.GONE
+            titleTextView.visibility = TextView.INVISIBLE
         }
     }
 
