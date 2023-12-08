@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
 
         val viewModel = (application as App).viewModel
-        val bundleWrapper = (application as App).bundleWrapper
+        val bundleWrapper = BundleWrapper.Base(outState)
 
         viewModel.save(bundleWrapper)
     }
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
 
         val viewModel = (application as App).viewModel
-        val bundleWrapper = (application as App).bundleWrapper
+        val bundleWrapper = BundleWrapper.Base(savedInstanceState)
 
         viewModel.restore(bundleWrapper)
     }

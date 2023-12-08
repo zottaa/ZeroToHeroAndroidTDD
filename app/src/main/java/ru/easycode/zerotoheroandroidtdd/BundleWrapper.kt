@@ -1,5 +1,8 @@
 package ru.easycode.zerotoheroandroidtdd
 
+import android.os.Build
+import android.os.Bundle
+
 interface BundleWrapper : Save<UiState>, Restore<UiState> {
 
     interface Save : BundleWrapper
@@ -10,18 +13,22 @@ interface BundleWrapper : Save<UiState>, Restore<UiState> {
         Save,
         Restore
 
-    class Base : Mutable {
-
-        private lateinit var uiState: UiState
-
+    class Base(private val bundle: Bundle) : Mutable {
         override fun save(uiState: UiState) {
-            this.uiState = uiState
+            bundle.putSerializable(KEY, uiState)
         }
 
         override fun restore(): UiState {
-            return uiState
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                bundle.getSerializable(KEY, UiState::class.java) as UiState
+            } else {
+                bundle.getSerializable(KEY) as UiState
+            }
         }
 
+        companion object {
+            private const val KEY = "uiStateKEY"
+        }
     }
 }
 
