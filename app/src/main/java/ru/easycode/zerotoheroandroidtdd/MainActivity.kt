@@ -7,11 +7,14 @@ import android.widget.ProgressBar
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewModel = (application as App).viewModel
+        viewModel = (application as App).viewModel
 
         val textView = findViewById<TextView>(R.id.titleTextView)
         val button = findViewById<Button>(R.id.actionButton)
@@ -29,7 +32,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        val viewModel = (application as App).viewModel
         val bundleWrapper = BundleWrapper.Base(outState)
 
         viewModel.save(bundleWrapper)
@@ -38,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
-        val viewModel = (application as App).viewModel
         val bundleWrapper = BundleWrapper.Base(savedInstanceState)
 
         viewModel.restore(bundleWrapper)
