@@ -4,7 +4,7 @@ import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 import java.io.Serializable
 
-interface UiState : Serializable{
+interface UiState {
 
     fun apply(textView: TextView, editText: TextInputEditText)
 
