@@ -85,7 +85,7 @@ class Task023Test {
                 .check(matches(withText("text number $i")))
         }
 
-        activityScenarioRule.scenario.recreate()
+        //activityScenarioRule.scenario.recreate()
 
         onView(RecyclerViewMatcher(R.id.recyclerView).atPosition(0, R.id.elementTextView))
             .check(matches(withText("first text")))
