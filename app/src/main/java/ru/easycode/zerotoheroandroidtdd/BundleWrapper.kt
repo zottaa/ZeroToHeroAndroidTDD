@@ -19,7 +19,7 @@ interface BundleWrapper {
         }
 
         override fun restore(): List<CharSequence> {
-            return bundle.getCharSequenceArrayList(KEY) as List<CharSequence>
+            return bundle.getCharSequenceArrayList(KEY) ?: ArrayList()
         }
     }
 
