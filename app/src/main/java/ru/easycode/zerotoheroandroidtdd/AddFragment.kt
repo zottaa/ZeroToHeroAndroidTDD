@@ -45,4 +45,9 @@ class AddFragment : AbstractFragment<FragmentAddBinding>() {
                 .commit()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        onBackPressedCallback.remove()
+    }
 }
