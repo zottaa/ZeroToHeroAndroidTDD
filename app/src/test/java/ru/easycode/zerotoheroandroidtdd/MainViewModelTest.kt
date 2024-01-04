@@ -12,7 +12,8 @@ class MainViewModelTest {
         val repository = FakeRepository.Base()
         val liveDataWrapper = FakeListLiveDataWrapper.Base()
         val viewModel = MainViewModel(
-            repository = repository, liveDataWrapper = liveDataWrapper,
+            repository = repository,
+            liveDataWrapper = liveDataWrapper,
             dispatcher = Dispatchers.Unconfined,
             dispatcherMain = Dispatchers.Unconfined
         )
