@@ -7,7 +7,6 @@ import androidx.room.Room
 class App : Application(), ProvideViewModel {
 
     private lateinit var factory: ViewModelFactory
-    private lateinit var db: ItemsDataBase
 
     private val clearViewModel: ClearViewModel = object : ClearViewModel {
         override fun clearViewModel(clasz: Class<out ViewModel>) {
@@ -17,8 +16,11 @@ class App : Application(), ProvideViewModel {
 
     override fun onCreate() {
         super.onCreate()
-        db = Room.inMemoryDatabaseBuilder(applicationContext, ItemsDataBase::class.java)
-            .build()
+        val db = Room.databaseBuilder(
+            applicationContext,
+            ItemsDataBase::class.java,
+            name = "items_database"
+        ).build()
         factory = ViewModelFactory.Base(ProvideViewModel.Base(clearViewModel, db.itemsDao()))
     }
 
