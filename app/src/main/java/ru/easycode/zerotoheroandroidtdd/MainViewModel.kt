@@ -20,9 +20,9 @@ class MainViewModel(
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     fun init() {
-        viewModelScope.launch(dispatcherMain) {
+        viewModelScope.launch(dispatcher) {
             val list = repository.list()
-            withContext(dispatcher) {
+            withContext(dispatcherMain) {
                 liveDataWrapper.update(list)
             }
         }

@@ -19,9 +19,9 @@ class AddViewModel(
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     fun add(value: String) {
-        viewModelScope.launch(dispatcherMain) {
+        viewModelScope.launch(dispatcher) {
             repository.add(value)
-            withContext(dispatcher) {
+            withContext(dispatcherMain) {
                 liveDataWrapper.add(value)
             }
         }
