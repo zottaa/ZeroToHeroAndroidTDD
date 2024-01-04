@@ -18,7 +18,6 @@ class App : Application(), ProvideViewModel {
     override fun onCreate() {
         super.onCreate()
         db = Room.inMemoryDatabaseBuilder(applicationContext, ItemsDataBase::class.java)
-            .allowMainThreadQueries()
             .build()
         factory = ViewModelFactory.Base(ProvideViewModel.Base(clearViewModel, db.itemsDao()))
     }
