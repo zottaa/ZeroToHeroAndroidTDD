@@ -1,6 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -27,6 +28,12 @@ class AddBottomSheetFragment : BottomSheetDialogFragment(R.layout.fragment_add) 
         }
         (dialog as BottomSheetDialog).onBackPressedDispatcher.addCallback(onBackPressedCallback)
         return dialog
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        viewModel.comeback()
+        dismiss()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -15,7 +15,6 @@ class AddViewModel(
     private val dispatcher: CoroutineDispatcher,
     private val dispatcherMain: CoroutineDispatcher
 ) : ViewModel() {
-
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     fun add(value: String) {
