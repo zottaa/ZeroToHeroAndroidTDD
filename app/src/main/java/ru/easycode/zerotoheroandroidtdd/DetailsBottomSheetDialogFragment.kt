@@ -44,6 +44,7 @@ class DetailsBottomSheetDialogFragment(
         viewModel.liveData.observe(viewLifecycleOwner) {
             view.findViewById<TextView>(R.id.itemTextView).text = it
             updateInput.setText(it)
+            updateInput.setSelection(it.length)
         }
 
         updateInput.addTextChangedListener {
