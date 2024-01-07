@@ -11,8 +11,8 @@ import ru.easycode.zerotoheroandroidtdd.core.FakeNavigation.Companion.NAVIGATE
 import ru.easycode.zerotoheroandroidtdd.core.Order
 import ru.easycode.zerotoheroandroidtdd.folder.core.FolderLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.details.FolderDetailsScreen
-import ru.easycode.zerotoheroandroidtdd.folder.details.NoteListLiveDataWrapper
-import ru.easycode.zerotoheroandroidtdd.folder.details.NoteUi
+import ru.easycode.zerotoheroandroidtdd.note.core.NoteListLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.note.core.NoteUi
 import ru.easycode.zerotoheroandroidtdd.note.core.NotesRepository
 
 class CreateNoteViewModelTest {
@@ -49,7 +49,7 @@ class CreateNoteViewModelTest {
         viewModel.createNote(folderId = 4L, text = "new note text")
 
         repository.check(4L, "new note text")
-        addLiveDataWrapper.check(NoteUi(id = 101, title = "new note text", folderId = 4L))
+        addLiveDataWrapper.check(NoteUi(id = 101, text = "new note text", folderId = 4L))
         clear.check(listOf(CreateNoteViewModel::class.java))
         navigation.checkScreen(FolderDetailsScreen)
         order.check(listOf(CREATE_NOTE_REPOSITORY, INCREMENT, NOTE_LIVEDATA_ADD, CLEAR, NAVIGATE))

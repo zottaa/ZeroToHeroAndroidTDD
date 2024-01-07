@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.folder.details
 
+import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -9,10 +10,12 @@ import ru.easycode.zerotoheroandroidtdd.core.FakeClear.Companion.CLEAR
 import ru.easycode.zerotoheroandroidtdd.core.FakeNavigation
 import ru.easycode.zerotoheroandroidtdd.core.FakeNavigation.Companion.NAVIGATE
 import ru.easycode.zerotoheroandroidtdd.core.Order
+import ru.easycode.zerotoheroandroidtdd.folder.core.FolderUi
 import ru.easycode.zerotoheroandroidtdd.folder.edit.EditFolderScreen
-import ru.easycode.zerotoheroandroidtdd.folder.list.FolderUi
 import ru.easycode.zerotoheroandroidtdd.folder.list.FoldersListScreen
 import ru.easycode.zerotoheroandroidtdd.note.core.MyNote
+import ru.easycode.zerotoheroandroidtdd.note.core.NoteListLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.note.core.NoteUi
 import ru.easycode.zerotoheroandroidtdd.note.core.NotesRepository
 import ru.easycode.zerotoheroandroidtdd.note.create.CreateNoteScreen
 import ru.easycode.zerotoheroandroidtdd.note.edit.EditNoteScreen
@@ -59,8 +62,8 @@ class FolderDetailsViewModelTest {
         viewModel.init()
         noteListLiveDataWrapper.check(
             listOf(
-                NoteUi(id = 1L, title = "first note", folderId = 7L),
-                NoteUi(id = 2L, title = "second note", folderId = 7L)
+                NoteUi(id = 1L, text = "first note", folderId = 7L),
+                NoteUi(id = 2L, text = "second note", folderId = 7L)
             )
         )
         noteListRepository.checkFolderId(7L)
@@ -79,7 +82,7 @@ class FolderDetailsViewModelTest {
     @Test
     fun test_edit_note() {
         folderLiveDataWrapper.update(FolderUi(id = 9L, "folder title", 0))
-        viewModel.editNote(NoteUi(id = 15L, title = "old", folderId = 9L))
+        viewModel.editNote(NoteUi(id = 15L, text = "old", folderId = 9L))
         navigation.checkScreen(EditNoteScreen(noteId = 15L))
         order.check(listOf(UPDATE_FOLDER_LIVEDATA, NAVIGATE))
     }
@@ -145,6 +148,10 @@ private interface FakeNoteListLiveDataWrapper : NoteListLiveDataWrapper.UpdateLi
             actual.clear()
             actual.addAll(notes)
             order.add(UPDATE_NOTES_LIVEDATA)
+        }
+
+        override fun liveData(): LiveData<List<NoteUi>> {
+            throw IllegalStateException("not used in tests")
         }
 
         override fun check(expected: List<NoteUi>) {

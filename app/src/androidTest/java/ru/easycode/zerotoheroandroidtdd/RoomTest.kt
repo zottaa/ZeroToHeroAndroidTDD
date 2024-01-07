@@ -65,6 +65,10 @@ class RoomTest {
 
     @Test
     fun test_notes() = runBlocking {
+        foldersDao.insert(folder = FolderCache(id = 10L, text = "first folder"))
+        foldersDao.insert(folder = FolderCache(id = 11L, text = "second folder"))
+
+
         notesDao.insert(note = NoteCache(id = 1L, text = "first note", folderId = 10L))
         notesDao.insert(note = NoteCache(id = 2L, text = "second note", folderId = 11L))
         notesDao.insert(note = NoteCache(id = 3L, text = "third note", folderId = 10L))

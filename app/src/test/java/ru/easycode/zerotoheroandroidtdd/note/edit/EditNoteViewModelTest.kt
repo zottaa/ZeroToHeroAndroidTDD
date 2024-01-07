@@ -11,8 +11,9 @@ import ru.easycode.zerotoheroandroidtdd.core.FakeNavigation.Companion.NAVIGATE
 import ru.easycode.zerotoheroandroidtdd.core.Order
 import ru.easycode.zerotoheroandroidtdd.folder.core.FolderLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.details.FolderDetailsScreen
-import ru.easycode.zerotoheroandroidtdd.folder.details.NoteListLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.note.core.MyNote
+import ru.easycode.zerotoheroandroidtdd.note.core.NoteListLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.note.core.NoteLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.note.core.NotesRepository
 
 class EditNoteViewModelTest {
@@ -106,8 +107,8 @@ private interface FakeNoteLiveDataWrapper : NoteLiveDataWrapper {
             assertEquals(expected, actual)
         }
 
-        override fun update(noteText: String) {
-            actual = noteText
+        override fun update(value: String) {
+            actual = value
             order.add(NOTE_LIVE_DATA)
         }
     }
@@ -154,9 +155,9 @@ private interface FakeEditNoteRepository : NotesRepository.Edit {
             order.add(REPOSITORY_DELETE)
         }
 
-        override suspend fun renameNote(noteId: Long, newName: String) {
+        override suspend fun renameNote(noteId: Long, newText: String) {
             actualId = noteId
-            actualName = newName
+            actualName = newText
             order.add(REPOSITORY_RENAME)
         }
 
