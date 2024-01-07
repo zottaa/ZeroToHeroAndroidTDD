@@ -17,7 +17,7 @@ import ru.easycode.zerotoheroandroidtdd.note.core.NotesRepository
 
 class EditNoteViewModel(
     private val folderLiveDataWrapper: FolderLiveDataWrapper.Decrement,
-    private val noteLiveDataWrapper: NoteLiveDataWrapper,
+    private val noteLiveDataWrapper: NoteLiveDataWrapper.Update,
     private val noteListLiveDataWrapper: NoteListLiveDataWrapper.Update,
     private val repository: NotesRepository.Edit,
     private val navigation: Navigation.Update,

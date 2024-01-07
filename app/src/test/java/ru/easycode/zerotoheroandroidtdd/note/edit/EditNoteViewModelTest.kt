@@ -95,7 +95,7 @@ private const val REPOSITORY_RENAME = "NotesRepository.Edit#RENAME"
 private const val REPOSITORY_NOTE = "NotesRepository.Edit#note"
 private const val NOTES_LIVE_DATA_UPDATE = "NoteListLiveDataWrapper.Update#update"
 
-private interface FakeNoteLiveDataWrapper : NoteLiveDataWrapper {
+private interface FakeNoteLiveDataWrapper : NoteLiveDataWrapper.Update {
 
     fun check(expected: String)
 

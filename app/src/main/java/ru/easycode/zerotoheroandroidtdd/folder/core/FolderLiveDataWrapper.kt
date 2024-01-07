@@ -26,7 +26,7 @@ interface FolderLiveDataWrapper {
 
     interface Mutable : Read, Update
 
-    interface All : Increment, Decrement, Update, Rename, Read
+    interface All : Increment, Decrement, Rename, Mutable
 
     class Base(
         private val liveData: SingleLiveEvent<FolderUi> = SingleLiveEvent()

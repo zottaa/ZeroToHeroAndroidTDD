@@ -1,11 +1,26 @@
 package ru.easycode.zerotoheroandroidtdd.core
 
-interface Navigation {
-    interface Update : LiveDataWrapper.Update<Screen>
+import androidx.lifecycle.LiveData
 
-    interface Read : LiveDataWrapper.Read<Screen>
+interface Navigation {
+    interface Update {
+        fun update(screen: Screen)
+    }
+
+    interface Read {
+        fun liveData(): LiveData<Screen>
+    }
 
     interface Mutable : Update, Read
 
-    class Base : LiveDataWrapper.Abstract<Screen>(), Mutable
+    class Base(
+        private val liveData: SingleLiveEvent<Screen> = SingleLiveEvent()
+    ) : Mutable {
+        override fun update(screen: Screen) {
+            liveData.value = screen
+        }
+
+        override fun liveData(): LiveData<Screen> = liveData
+
+    }
 }
