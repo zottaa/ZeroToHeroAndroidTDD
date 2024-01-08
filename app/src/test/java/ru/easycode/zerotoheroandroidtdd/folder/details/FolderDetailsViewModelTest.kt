@@ -14,8 +14,6 @@ import ru.easycode.zerotoheroandroidtdd.folder.core.FolderUi
 import ru.easycode.zerotoheroandroidtdd.folder.edit.EditFolderScreen
 import ru.easycode.zerotoheroandroidtdd.folder.list.FoldersListScreen
 import ru.easycode.zerotoheroandroidtdd.note.core.MyNote
-import ru.easycode.zerotoheroandroidtdd.note.core.NoteListLiveDataWrapper
-import ru.easycode.zerotoheroandroidtdd.note.core.NoteUi
 import ru.easycode.zerotoheroandroidtdd.note.core.NotesRepository
 import ru.easycode.zerotoheroandroidtdd.note.create.CreateNoteScreen
 import ru.easycode.zerotoheroandroidtdd.note.edit.EditNoteScreen

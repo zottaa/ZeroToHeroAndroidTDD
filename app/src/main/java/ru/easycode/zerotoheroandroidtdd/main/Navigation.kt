@@ -1,6 +1,8 @@
-package ru.easycode.zerotoheroandroidtdd.core
+package ru.easycode.zerotoheroandroidtdd.main
 
 import androidx.lifecycle.LiveData
+import ru.easycode.zerotoheroandroidtdd.core.Screen
+import ru.easycode.zerotoheroandroidtdd.core.SingleLiveEvent
 
 interface Navigation {
     interface Update {

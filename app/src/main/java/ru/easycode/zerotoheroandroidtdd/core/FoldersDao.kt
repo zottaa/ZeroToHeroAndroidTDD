@@ -16,4 +16,7 @@ interface FoldersDao {
 
     @Query("DELETE FROM folders where folder_id = :folderId")
     suspend fun delete(folderId: Long)
+
+    @Query("SELECT * FROM folders where folder_id = :folderId")
+    suspend fun folder(folderId: Long): FolderCache
 }

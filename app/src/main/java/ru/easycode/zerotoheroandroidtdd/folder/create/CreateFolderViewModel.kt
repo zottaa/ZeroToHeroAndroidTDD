@@ -8,11 +8,11 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.easycode.zerotoheroandroidtdd.core.ClearViewModels
-import ru.easycode.zerotoheroandroidtdd.core.Navigation
 import ru.easycode.zerotoheroandroidtdd.folder.core.FolderUi
 import ru.easycode.zerotoheroandroidtdd.folder.core.FoldersRepository
 import ru.easycode.zerotoheroandroidtdd.folder.list.FolderListLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.list.FoldersListScreen
+import ru.easycode.zerotoheroandroidtdd.main.Navigation
 
 class CreateFolderViewModel(
     private val repository: FoldersRepository.Create,

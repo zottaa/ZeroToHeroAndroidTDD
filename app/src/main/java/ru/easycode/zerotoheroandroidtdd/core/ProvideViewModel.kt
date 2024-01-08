@@ -6,15 +6,16 @@ import ru.easycode.zerotoheroandroidtdd.folder.core.FolderLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.core.FoldersRepository
 import ru.easycode.zerotoheroandroidtdd.folder.create.CreateFolderViewModel
 import ru.easycode.zerotoheroandroidtdd.folder.details.FolderDetailsViewModel
+import ru.easycode.zerotoheroandroidtdd.folder.details.NoteListLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.edit.EditFolderViewModel
 import ru.easycode.zerotoheroandroidtdd.folder.list.FolderListLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.list.FolderListViewModel
 import ru.easycode.zerotoheroandroidtdd.main.MainViewModel
-import ru.easycode.zerotoheroandroidtdd.note.core.NoteListLiveDataWrapper
-import ru.easycode.zerotoheroandroidtdd.note.core.NoteLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.main.Navigation
 import ru.easycode.zerotoheroandroidtdd.note.core.NotesRepository
 import ru.easycode.zerotoheroandroidtdd.note.create.CreateNoteViewModel
 import ru.easycode.zerotoheroandroidtdd.note.edit.EditNoteViewModel
+import ru.easycode.zerotoheroandroidtdd.note.edit.NoteLiveDataWrapper
 
 interface ProvideViewModel {
     fun <T : ViewModel> viewModel(clasz: Class<T>): T

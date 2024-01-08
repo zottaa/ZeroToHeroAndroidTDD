@@ -1,5 +1,6 @@
 package ru.easycode.zerotoheroandroidtdd.folder.edit
 
+import androidx.lifecycle.LiveData
 import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -9,7 +10,9 @@ import ru.easycode.zerotoheroandroidtdd.core.FakeClear.Companion.CLEAR
 import ru.easycode.zerotoheroandroidtdd.core.FakeNavigation
 import ru.easycode.zerotoheroandroidtdd.core.FakeNavigation.Companion.NAVIGATE
 import ru.easycode.zerotoheroandroidtdd.core.Order
+import ru.easycode.zerotoheroandroidtdd.folder.core.Folder
 import ru.easycode.zerotoheroandroidtdd.folder.core.FolderLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.folder.core.FolderUi
 import ru.easycode.zerotoheroandroidtdd.folder.core.FoldersRepository
 import ru.easycode.zerotoheroandroidtdd.folder.details.FolderDetailsScreen
 import ru.easycode.zerotoheroandroidtdd.folder.details.FolderDetailsViewModel
@@ -100,6 +103,10 @@ private interface FakeEditFolderRepository : FoldersRepository.Edit {
             actualFolderId = folderId
         }
 
+        override suspend fun folder(folderId: Long): Folder {
+            throw IllegalStateException("not used in test")
+        }
+
         override suspend fun rename(folderId: Long, newName: String) {
             order.add(REPOSITORY_RENAME)
             actualFolderId = folderId
@@ -125,6 +132,14 @@ private interface FakeRenameFolderLiveDataWrapper : FolderLiveDataWrapper.Rename
         override fun rename(newName: String) {
             order.add(RENAME_LIVEDATA)
             actual = newName
+        }
+
+        override fun update(folder: FolderUi) {
+            throw IllegalStateException("not used in test")
+        }
+
+        override fun folderLiveData(): LiveData<FolderUi> {
+            throw IllegalStateException("not used in test")
         }
     }
 }

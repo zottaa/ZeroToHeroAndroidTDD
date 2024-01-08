@@ -1,4 +1,4 @@
-package ru.easycode.zerotoheroandroidtdd.note.core
+package ru.easycode.zerotoheroandroidtdd.folder.details
 
 import androidx.lifecycle.LiveData
 import ru.easycode.zerotoheroandroidtdd.core.SingleLiveEvent
@@ -8,10 +8,12 @@ interface NoteListLiveDataWrapper {
         fun create(noteUi: NoteUi)
     }
 
-    interface UpdateListAndRead {
-        fun update(notes: List<NoteUi>)
-
+    interface Read {
         fun liveData(): LiveData<List<NoteUi>>
+    }
+
+    interface UpdateListAndRead : Read {
+        fun update(notes: List<NoteUi>)
     }
 
     interface Update {

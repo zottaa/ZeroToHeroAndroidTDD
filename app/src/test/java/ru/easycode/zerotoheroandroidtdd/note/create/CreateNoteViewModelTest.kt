@@ -11,8 +11,8 @@ import ru.easycode.zerotoheroandroidtdd.core.FakeNavigation.Companion.NAVIGATE
 import ru.easycode.zerotoheroandroidtdd.core.Order
 import ru.easycode.zerotoheroandroidtdd.folder.core.FolderLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.details.FolderDetailsScreen
-import ru.easycode.zerotoheroandroidtdd.note.core.NoteListLiveDataWrapper
-import ru.easycode.zerotoheroandroidtdd.note.core.NoteUi
+import ru.easycode.zerotoheroandroidtdd.folder.details.NoteListLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.folder.details.NoteUi
 import ru.easycode.zerotoheroandroidtdd.note.core.NotesRepository
 
 class CreateNoteViewModelTest {

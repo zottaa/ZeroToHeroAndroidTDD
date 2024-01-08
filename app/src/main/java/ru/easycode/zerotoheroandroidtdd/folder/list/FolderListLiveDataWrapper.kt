@@ -6,10 +6,14 @@ import ru.easycode.zerotoheroandroidtdd.folder.core.FolderUi
 
 
 interface FolderListLiveDataWrapper {
-    interface UpdateListAndRead {
+
+    interface Read {
+        fun liveData(): LiveData<List<FolderUi>>
+    }
+
+    interface UpdateListAndRead : Read {
         fun update(list: List<FolderUi>)
 
-        fun liveData(): LiveData<List<FolderUi>>
     }
 
     interface Create {

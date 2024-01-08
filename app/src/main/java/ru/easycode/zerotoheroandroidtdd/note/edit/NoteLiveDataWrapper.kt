@@ -1,4 +1,4 @@
-package ru.easycode.zerotoheroandroidtdd.note.core
+package ru.easycode.zerotoheroandroidtdd.note.edit
 
 import androidx.lifecycle.LiveData
 import ru.easycode.zerotoheroandroidtdd.core.SingleLiveEvent

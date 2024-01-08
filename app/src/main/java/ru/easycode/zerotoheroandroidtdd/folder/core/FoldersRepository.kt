@@ -18,6 +18,8 @@ interface FoldersRepository {
     interface Edit {
         suspend fun delete(folderId: Long)
 
+        suspend fun folder(folderId: Long): Folder
+
         suspend fun rename(folderId: Long, newName: String)
     }
 
@@ -42,6 +44,10 @@ interface FoldersRepository {
             foldersDao.delete(folderId)
             notesDao.deleteByFolderId(folderId)
         }
+
+        override suspend fun folder(folderId: Long): Folder =
+            foldersDao.folder(folderId).let { Folder(it.id, it.text, notesDao.notes(it.id).size) }
+
 
         override suspend fun rename(folderId: Long, newName: String) {
             foldersDao.insert(FolderCache(folderId, newName))

@@ -8,11 +8,11 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.easycode.zerotoheroandroidtdd.core.ClearViewModels
-import ru.easycode.zerotoheroandroidtdd.core.Navigation
 import ru.easycode.zerotoheroandroidtdd.folder.core.FolderLiveDataWrapper
 import ru.easycode.zerotoheroandroidtdd.folder.details.FolderDetailsScreen
-import ru.easycode.zerotoheroandroidtdd.note.core.NoteListLiveDataWrapper
-import ru.easycode.zerotoheroandroidtdd.note.core.NoteUi
+import ru.easycode.zerotoheroandroidtdd.folder.details.NoteListLiveDataWrapper
+import ru.easycode.zerotoheroandroidtdd.folder.details.NoteUi
+import ru.easycode.zerotoheroandroidtdd.main.Navigation
 import ru.easycode.zerotoheroandroidtdd.note.core.NotesRepository
 
 class CreateNoteViewModel(

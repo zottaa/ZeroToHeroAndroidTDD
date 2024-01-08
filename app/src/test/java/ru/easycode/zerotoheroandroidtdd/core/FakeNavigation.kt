@@ -2,6 +2,7 @@ package ru.easycode.zerotoheroandroidtdd.core
 
 import androidx.lifecycle.LiveData
 import org.junit.Assert.assertEquals
+import ru.easycode.zerotoheroandroidtdd.main.Navigation
 
 interface FakeNavigation : Navigation.Mutable {
 
@@ -19,8 +20,8 @@ interface FakeNavigation : Navigation.Mutable {
 
         private lateinit var actual: Screen
 
-        override fun update(value: Screen) {
-            actual = value
+        override fun update(screen: Screen) {
+            actual = screen
             order.add(NAVIGATE)
         }
 

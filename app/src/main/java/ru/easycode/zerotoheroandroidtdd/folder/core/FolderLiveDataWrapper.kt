@@ -1,6 +1,7 @@
 package ru.easycode.zerotoheroandroidtdd.folder.core
 
-import ru.easycode.zerotoheroandroidtdd.core.SingleLiveEvent
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 
 interface FolderLiveDataWrapper {
@@ -16,7 +17,11 @@ interface FolderLiveDataWrapper {
         fun update(folder: FolderUi)
     }
 
-    interface Rename {
+    interface ProvideLiveData {
+        fun folderLiveData(): LiveData<FolderUi>
+    }
+
+    interface Rename : Update, ProvideLiveData {
         fun rename(newName: String)
     }
 
@@ -24,24 +29,32 @@ interface FolderLiveDataWrapper {
         fun folderId(): Long
     }
 
-    interface Mutable : Read, Update
+    interface Mutable : Read, Update, ProvideLiveData
 
     interface All : Increment, Decrement, Rename, Mutable
 
     class Base(
-        private val liveData: SingleLiveEvent<FolderUi> = SingleLiveEvent()
+        private val liveData: MutableLiveData<FolderUi> = MutableLiveData()
     ) : All {
         override fun increment() {
-            liveData.value?.increment()
+            liveData.value?.let {
+                it.increment()
+                update(it)
+            }
         }
 
         override fun decrement() {
-            liveData.value?.decrement()
+            liveData.value?.let {
+                it.decrement()
+                update(it)
+            }
         }
 
         override fun update(folder: FolderUi) {
             liveData.value = folder
         }
+
+        override fun folderLiveData(): LiveData<FolderUi> = liveData
 
         override fun rename(newName: String) {
             val folder = liveData.value

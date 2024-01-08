@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">ZeroToHeroAndroidTDD</string>
+    <string name="button_description_add">Add</string>
+    <string name="text_view_title_folders">Folders</string>
+    <string name="text_view_title_create_folder">Input folder name</string>
+    <string name="button_save">save</string>
+    <string name="button_edit_folder">edit folder</string>
+    <string name="text_view_input_note">Input note</string>
+    <string name="text_view_rename_note">rename note</string>
+    <string name="button_delete">delete</string>
+    <string name="text_view_rename_folder">rename folder</string>
+    <string name="notes_count">(%1$d)</string>
 </resources>
